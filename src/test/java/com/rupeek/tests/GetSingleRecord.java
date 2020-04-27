@@ -59,8 +59,8 @@ public class GetSingleRecord extends CommonLib {
 	
 	@Test(priority = 1)
 	public void getSingleRecordWithoutAuth() throws Throwable {
-		given().pathParam("phone", 12e34).when().get(IConstants.SINGLE_CUSTOMER).then().assertThat()
-				.statusCode(200);
+		given().pathParam("phone", 8037602400l).when().get(IConstants.SINGLE_CUSTOMER).then().assertThat()
+				.statusCode(401);
 	}
 
 }
