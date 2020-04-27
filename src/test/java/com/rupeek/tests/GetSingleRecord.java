@@ -30,7 +30,7 @@ public class GetSingleRecord extends CommonLib {
 
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 4)
 	public void getSingleRecordWithInvalidPhone() throws Throwable {
 		// Bearer Token
 		token = JsonUtils.getJsonString(response, "token");
@@ -54,6 +54,12 @@ public class GetSingleRecord extends CommonLib {
 		token = JsonUtils.getJsonString(response, "token");
 		
 		given().auth().oauth2(token).given().pathParam("phone", 12e34).when().get(IConstants.SINGLE_CUSTOMER).then().assertThat()
+				.statusCode(200);
+	}
+	
+	@Test(priority = 1)
+	public void getSingleRecordWithoutAuth() throws Throwable {
+		given().pathParam("phone", 12e34).when().get(IConstants.SINGLE_CUSTOMER).then().assertThat()
 				.statusCode(200);
 	}
 

@@ -27,4 +27,12 @@ public class GetAllRecords extends CommonLib {
 				.contentType(ContentType.JSON);
 
 	}
+	
+	@Test(priority = 1)
+	public void getReourceWithValidDatawithoutAuth() throws Throwable {
+		
+		given().get(IConstants.ALL_CUSTOMERS).then().assertThat().statusCode(200).and()
+				.contentType(ContentType.JSON);
+
+	}
 }
